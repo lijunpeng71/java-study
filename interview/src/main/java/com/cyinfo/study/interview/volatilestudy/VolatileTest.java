@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 class MyData {
 
-    int number = 0;
+    volatile int number = 0;
 
     public void addTo60() {
         this.number = 60;
