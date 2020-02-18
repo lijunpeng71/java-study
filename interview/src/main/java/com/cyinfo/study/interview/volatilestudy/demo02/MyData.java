@@ -1,11 +1,11 @@
-package com.cyinfo.study.interview.volatilestudy01;
+package com.cyinfo.study.interview.volatilestudy.demo02;
 
 /**
  * @author GW00171873
  */
 public class MyData {
 
-    int number = 0;
+    volatile int number = 0;
 
     public void addTo60() {
         this.number = 60;

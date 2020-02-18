@@ -1,4 +1,4 @@
-package com.cyinfo.study.interview.volatilestudy01;
+package com.cyinfo.study.interview.volatilestudy.demo01;
 
 import java.util.concurrent.TimeUnit;
 
