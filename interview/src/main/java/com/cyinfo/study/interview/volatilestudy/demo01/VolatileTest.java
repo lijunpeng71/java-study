@@ -9,6 +9,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class VolatileTest {
     public static void main(String[] args) {
+        seeOkByVolatile();
+    }
+
+    public static void seeOkByVolatile() {
         MyData myData = new MyData();
         new Thread(() -> {
             System.out.println(Thread.currentThread().getName() + "\t come in");
