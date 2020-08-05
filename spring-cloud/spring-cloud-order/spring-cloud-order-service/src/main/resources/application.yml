@@ -3,7 +3,8 @@ server:
 spring:
   application:
     name: spring-cloud-order-20010
-
+  datasource:
+    driver-class-name:
 eureka:
   instance:
     prefer-ip-address: true

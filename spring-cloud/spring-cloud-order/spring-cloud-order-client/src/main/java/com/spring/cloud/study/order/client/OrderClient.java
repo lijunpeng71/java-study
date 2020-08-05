@@ -10,5 +10,5 @@ package com.spring.cloud.study.order.client;
  * @author xxx
  * @since java-study
  */
-public class OrderClient {
+public interface OrderClient {
 }
