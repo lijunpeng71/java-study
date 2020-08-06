@@ -2,15 +2,41 @@ server:
   port: 20010
 spring:
   application:
-    name: spring-cloud-order-20010
+    name: spring-cloud-order
   datasource:
-    driver-class-name:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://139.196.178.196:3306/spring_cloud_test?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=GMT%2B8&useSSL=false
+    username: root
+    password: cyinfo666888666
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: auto
+  type-aliases-package: com.spring.cloud.study.order.model
+  mapper-locations: classpath:com/spring/cloud/study/order/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
 eureka:
   instance:
+    instance-id: ${spring.application.name}-${random.uuid}
     prefer-ip-address: true
-    instance-id: ${spring.application.name}
   client:
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
-      defaultZone: http://localhost:10010/eureka/,http://localhost:10020/eureka/
+      defaultZone: http://localhost:10010/eureka/
     healthcheck:
       enabled: true
+
+feign:
+  httpclient:
+    connection-timeout: 5000
+ribbon:
+  eureka:
+    enabled: true

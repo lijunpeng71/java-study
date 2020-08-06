@@ -1,6 +1,5 @@
 package com.spring.cloud.study.order.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.spring.cloud.study.order.model.Order;
 
 /**
@@ -13,5 +12,21 @@ import com.spring.cloud.study.order.model.Order;
  * @author xxx
  * @since java-study
  */
-public interface OrderService extends IService<Order> {
+public interface OrderService {
+
+    /**
+     * 查询
+     *
+     * @param id
+     * @return
+     */
+    Order getById(Long id);
+
+    /**
+     * 创建
+     *
+     * @param order
+     * @return
+     */
+    Order create(Order order);
 }

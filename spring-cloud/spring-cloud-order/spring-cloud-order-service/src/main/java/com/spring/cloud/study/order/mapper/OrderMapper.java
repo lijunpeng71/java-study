@@ -2,6 +2,7 @@ package com.spring.cloud.study.order.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.spring.cloud.study.order.model.Order;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <b><code>OrderMapper</code></b>
@@ -13,5 +14,6 @@ import com.spring.cloud.study.order.model.Order;
  * @author xxx
  * @since java-study
  */
+@Mapper
 public interface OrderMapper extends BaseMapper<Order> {
 }
