@@ -1,5 +1,6 @@
 package com.spring.cloud.study.order.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.spring.cloud.study.common.result.Result;
 import com.spring.cloud.study.order.client.OrderClient;
 import com.spring.cloud.study.order.model.Order;
@@ -27,7 +28,7 @@ public class OrderController implements OrderClient {
     @Resource
     private OrderService orderService;
 
-
+    @HystrixCommand(fallbackMethod = "getByIdFallback")
     @Override
     public Result<Order> getById(Long id) {
         log.info("order-getById");
@@ -38,6 +39,10 @@ public class OrderController implements OrderClient {
         }
         Order order = orderService.getById(id);
         return Result.success(order);
+    }
+
+    public Result<Order> getByIdFallback(Long id) {
+        return Result.fail("hystrix");
     }
 
     @Override
