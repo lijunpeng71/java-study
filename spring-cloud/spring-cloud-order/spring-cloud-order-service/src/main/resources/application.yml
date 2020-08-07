@@ -54,3 +54,10 @@ logging:
   level:
     root: info
     com.spring.cloud.study: debug
+#暴露全部的监控信息
+management:
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: hystrix.stream

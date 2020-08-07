@@ -1,5 +1,7 @@
 package com.spring.cloud.study.portal.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.spring.cloud.study.common.result.Result;
 import com.spring.cloud.study.order.client.OrderClient;
 import com.spring.cloud.study.order.model.Order;
@@ -31,6 +33,12 @@ public class OrderController {
     private OrderClient orderClient;
 
     @GetMapping(value = "getById/{id}")
+    @HystrixCommand(fallbackMethod = "getByIdFallback", commandProperties = {
+            @HystrixProperty(name = "circuitBreaker.enabled", value = "true"),//是否开启断路器
+            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),//请求次数
+            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "10000"),//时间窗口期
+            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "60"),//失败率达到多少后跳闸
+    })
     public Result<OrderVO> getById(@PathVariable(value = "id") Long id) {
         log.info("portal-getById");
         Result<Order> orderResult = orderClient.getById(id);
@@ -42,8 +50,14 @@ public class OrderController {
             orderVO.setNo(order.getNo());
             orderVO.setCreateTime(order.getCreateTime());
             orderVO.setStatus(order.getStatus());
+            return Result.success(orderVO);
+        } else {
+            return Result.fail(orderResult.getMsg());
         }
-        return Result.success(orderVO);
+    }
+
+    public Result<OrderVO> getByIdFallback(Long id) {
+        return Result.fail("portal-hystrix");
     }
 
 }
