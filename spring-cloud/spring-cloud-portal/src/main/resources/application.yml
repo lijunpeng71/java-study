@@ -8,9 +8,16 @@ spring:
     time-zone: GMT+8
     serialization:
       write-dates-as-timestamps: false
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: false
+ribbon:
+  eureka:
+    enabled: true
 eureka:
   instance:
-    instance-id: ${spring.application.name}-${random.uuid}
+    instance-id: ${spring.application.name}
     prefer-ip-address: true
   client:
     register-with-eureka: true
@@ -20,8 +27,16 @@ eureka:
     healthcheck:
       enabled: true
 feign:
-  httpclient:
-    connection-timeout: 5000
-ribbon:
-  eureka:
+  client:
+    config:
+      default:
+        # 建立连接所用的时间，适用于网络状况正常的情况下，两端连接所需要的时间
+        ConnectionTimeout: 5000
+        # 指建立连接后从服务端读取到可用资源所用的时间
+        ReadTimeout: 10000
+  hystrix:
     enabled: true
+logging:
+  level:
+    root: info
+    com.spring.cloud.study: debug

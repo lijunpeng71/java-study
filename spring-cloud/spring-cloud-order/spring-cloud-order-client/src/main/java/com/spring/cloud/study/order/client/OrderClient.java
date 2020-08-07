@@ -3,6 +3,7 @@ package com.spring.cloud.study.order.client;
 import com.spring.cloud.study.common.result.Result;
 import com.spring.cloud.study.order.model.Order;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @author xxx
  * @since java-study
  */
+@Component
 @FeignClient(value = "spring-cloud-order")
 public interface OrderClient {
 

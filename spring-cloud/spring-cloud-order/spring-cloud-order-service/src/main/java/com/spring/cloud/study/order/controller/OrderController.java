@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * <b><code>OrderController</code></b>
@@ -26,8 +27,15 @@ public class OrderController implements OrderClient {
     @Resource
     private OrderService orderService;
 
+
     @Override
     public Result<Order> getById(Long id) {
+        log.info("order-getById");
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Order order = orderService.getById(id);
         return Result.success(order);
     }

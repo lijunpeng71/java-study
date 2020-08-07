@@ -4,6 +4,7 @@ import com.spring.cloud.study.common.result.Result;
 import com.spring.cloud.study.order.client.OrderClient;
 import com.spring.cloud.study.order.model.Order;
 import com.spring.cloud.study.portal.vo.OrderVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("order")
+@Slf4j
 public class OrderController {
 
     @Resource
@@ -30,6 +32,7 @@ public class OrderController {
 
     @GetMapping(value = "getById/{id}")
     public Result<OrderVO> getById(@PathVariable(value = "id") Long id) {
+        log.info("portal-getById");
         Result<Order> orderResult = orderClient.getById(id);
         OrderVO orderVO = null;
         if (orderResult.isOk()) {
