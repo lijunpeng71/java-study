@@ -1,8 +1,6 @@
-server:
-  port: 8001
 spring:
-  application:
-    name: spring-cloud-portal
+  profiles:
+    active: dev
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -12,38 +10,8 @@ spring:
     loadbalancer:
       retry:
         enabled: false
-ribbon:
-  eureka:
-    enabled: true
-eureka:
-  instance:
-    instance-id: ${spring.application.name}
-    prefer-ip-address: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:10010/eureka/
-    healthcheck:
-      enabled: true
-feign:
-  client:
-    config:
-      default:
-        # 建立连接所用的时间，适用于网络状况正常的情况下，两端连接所需要的时间
-        ConnectionTimeout: 5000
-        # 指建立连接后从服务端读取到可用资源所用的时间
-        ReadTimeout: 10000
-  hystrix:
-    enabled: true
-logging:
-  level:
-    root: info
-    com.spring.cloud.study: debug
-#暴露全部的监控信息
 management:
   endpoints:
     web:
-      base-path: /
       exposure:
-        include: hystrix.stream
+        include: '*'
