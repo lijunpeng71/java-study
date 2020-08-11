@@ -20,4 +20,8 @@ server:
 logging:
   level:
     root: info
-    com.spring.cloud.study: debug
+    com:
+      spring:
+        cloud:
+          study: debug
+      alibaba: debug

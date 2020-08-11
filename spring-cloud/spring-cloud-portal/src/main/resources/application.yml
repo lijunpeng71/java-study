@@ -10,8 +10,15 @@ spring:
     loadbalancer:
       retry:
         enabled: false
+    sentinel:
+      filter:
+        enabled: false
+      transport:
+        dashboard: 139.196.178.196:10110
+        port: 8719
+        clientIp: 139.196.178.196
 management:
   endpoints:
     web:
       exposure:
-        include: '*'
+        include: "*"

@@ -7,8 +7,3 @@ spring:
         server-addr: nacos.xueyongxiangzhang.com:80
       discovery:
         server-addr: nacos.xueyongxiangzhang.com:80
-    sentinel:
-      transport:
-        dashboard: sentinel.xueyongxiangzhang.com
-        client-ip: 139.196.178.196
-        port: 8719
