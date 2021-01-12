@@ -94,19 +94,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <repositories>
-        <repository>
-            <id>maven-lpu</id>
-            <name>maven-lpu</name>
-            <url>http://139.196.178.196:8081/repository/maven-lpu/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
     <build>
         <pluginManagement>
             <plugins>
@@ -142,17 +129,4 @@
             </plugins>
         </pluginManagement>
     </build>
-    <!-- 发布maven私服 -->
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>releases</name>
-            <url>http://139.196.178.196:8081/repository/maven-lpu-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>snapshots</name>
-            <url>http://139.196.178.196:8081/repository/maven-lpu-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
 </project>
