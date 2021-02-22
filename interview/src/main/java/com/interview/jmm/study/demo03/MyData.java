@@ -1,4 +1,4 @@
-package com.cyinfo.study.interview.volatilestudy.demo03;
+package com.interview.jmm.study.demo03;
 
 /**
  * @author GW00171873

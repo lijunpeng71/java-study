@@ -1,11 +1,11 @@
-package com.cyinfo.study.interview.volatilestudy.demo01;
+package com.interview.jmm.study.demo02;
 
 import java.util.concurrent.TimeUnit;
 
 /**
  * @author GW00171873
  * 1.验证volatile的可见性
- * 1.1 假如int number=0; number变量之前根本没有添加volatile关键字修饰
+ * 1.1添加了volatile之后可以保证可见性
  */
 public class VolatileTest {
     public static void main(String[] args) {
