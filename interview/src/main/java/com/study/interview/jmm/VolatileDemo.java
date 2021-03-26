@@ -7,6 +7,6 @@ package com.study.interview.jmm;
  */
 public class VolatileDemo {
     public static void main(String[] args) {
-
+        System.out.println("111");
     }
 }
