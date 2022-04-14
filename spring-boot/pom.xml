@@ -6,13 +6,6 @@
     <artifactId>spring-boot</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>spring-boot-test</module>
-        <module>spring-boot-thrift</module>
-        <module>spring-boot-common</module>
-        <module>spring-boot-client</module>
-        <module>spring-boot-mistake</module>
-    </modules>
     <name>spring-boot</name>
     <description>spring-boot</description>
     <properties>
