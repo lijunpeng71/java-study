@@ -1,4 +1,4 @@
-package com.xuelianyong.interview.thread;
+package com.xuelianyong.interview.thread.chapter05;
 
 /**
  * @program: java-study

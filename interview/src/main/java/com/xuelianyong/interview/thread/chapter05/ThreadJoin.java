@@ -1,4 +1,4 @@
-package com.xuelianyong.interview.thread;
+package com.xuelianyong.interview.thread.chapter05;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
