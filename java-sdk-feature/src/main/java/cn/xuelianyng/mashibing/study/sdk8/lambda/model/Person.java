@@ -21,4 +21,8 @@ public class Person implements Serializable {
 
     private Integer height;
 
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+    }
 }
