@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+       default-lazy-init="true">
+
+    <!-- 注册task处理类 -->
+    <bean class="com.cip.crane.client.ScheduleManager" init-method="init" destroy-method="destroy" lazy-init="false">
+        <!--可以为空 非空范围在8410（含）~8430（含） 默认为8410，用户可选配置-->
+        <property name="taskAcceptorPort" value="8418"/>
+        <!--此端口一般不会变，该端口对应调度端的通信端口，用户可选配置-->
+        <property name="taskCallBackPort" value="8383"/>
+        <!--initedJobs会保存用户注册的所有任务，用户必须配置-->
+        <property name="initedJobs">
+            <map>
+                <!-- 注册TaskHandlerExemple key取自配置任务时的任务名)-->
+                <entry key="syncMscPayPlanJob" value-ref="syncMscPayPlanJob"/>
+                <entry key="walletRealNameExceptionJob" value-ref="walletRealNameExceptionJob"/>
+                <entry key="contractNumCountJob" value-ref="contractNumCountJob" />
+                <entry key="contractNumUseCheckJob" value-ref="contractNumUseCheckJob" />
+            </map>
+        </property>
+    </bean>
+</beans>
